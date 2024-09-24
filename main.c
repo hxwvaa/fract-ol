@@ -25,24 +25,32 @@ int chk_val(char *val)
     return(1);
 }
 
-char	*check_arg(int ac, char **av)
+int check_arg(int ac, char **av)
 {
 	if (ac == 2 && ft_strncmp("mandelbrot", av[1], ft_strlen("mandelbrot")
 			+ 1) == 0)
-		return("mandel");
+		return(1);
 	else if (ac == 4 && ft_strncmp("julia", av[1], ft_strlen("julia") + 1) == 0
 		&& (chk_val(av[2]) && chk_val(av[3])))
-		return("julia");
-    return("error");
+		return(2);
+    //add for bonus
+    return(-1);
 }
 
 int	main(int ac, char **av)
 {
-	char *name;
+	int n;
 
 	if (ac == 1)
 		format_error();
-	name = check_arg(ac, av);
-    if(ft_strncmp("error", name, 5) == 0)
+	n = check_arg(ac, av);
+    if(n == -1)
         format_error();
+    if (n == 1)
+        ; //mandelbrot;
+    else if(n == 2)
+        ; //julia
+    else if (n == 3)
+        ; //bonus
+    
 }
