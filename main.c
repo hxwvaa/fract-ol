@@ -40,17 +40,23 @@ int check_arg(int ac, char **av)
 int	main(int ac, char **av)
 {
 	int n;
+    void *mlx_ptr;
+    void *mlx_window;
+    // void *img;
 
 	if (ac == 1)
 		format_error();
 	n = check_arg(ac, av);
     if(n == -1)
         format_error();
+    mlx_ptr = mlx_init();
+    mlx_window = mlx_new_window(mlx_ptr, 400, 400, "hello");
+    // img = mlx_new_image(mlx_ptr, 400, 400);
+    mlx_loop(mlx_ptr);
     if (n == 1)
         ; //mandelbrot;
     else if(n == 2)
         ; //julia
     else if (n == 3)
         ; //bonus
-    
 }
