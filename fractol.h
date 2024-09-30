@@ -9,7 +9,11 @@
 #define WIDTH 800
 #define HEIGHT 800
 
-
+typedef struct s_value
+{
+	double z;
+	double c;
+}	t_value;
 
 typedef struct s_img
 {

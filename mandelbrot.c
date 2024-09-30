@@ -1,9 +1,25 @@
 #include "fractol.h"
 
+void colour_mandelbrot (int x, int y, t_data *fractol)
+{
+    
+}
+
 void mandelbrot(t_data *fractol)
 {
+    int x;
+    int y;
 
-            my_mlx_pixel_put(fractol, i, j, 0x00FF0000);
-
-    mlx_put_image_to_window(fractol->mlx_ptr, fractol->mlx_window, fractol->img.img, 0, 0);
+    x = 0;
+    y = 0;
+    while(x < WIDTH)
+    {
+        y = 0;
+        while(y < HEIGHT)
+        {
+            colour_mandelbrot(x, y, fractol);
+            y++;
+        }
+        x++;
+    }
 }
