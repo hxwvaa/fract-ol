@@ -1,21 +1,42 @@
 #ifndef FRACTOL_H
-#define FRACTOL_H
+# define FRACTOL_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <OpenGL/gl.h>
-#include "minilibx_opengl/mlx.h"
-// #include "minilibx_opengl/mlx_int.h"
-// #include "minilibx_opengl/mlx_new_window.h"
-// #include "minilibx_opengl/mlx_png.h"
-// #include "minilibx_opengl/mlx_opengl.h"
+# include "minilibx_opengl/mlx.h"
+# include <OpenGL/gl.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-size_t	ft_strlen(const char *s);
-void	ft_putstr_fd(char *s, int fd);
-void format_error(void);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
-int	ft_isdigit(int i);
+#define WIDTH 800
+#define HEIGHT 800
 
 
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*mlx_window;
+    char *fractal_name;
+	t_img img;
+}			t_data;
+
+size_t		ft_strlen(const char *s);
+void		ft_putstr_fd(char *s, int fd);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+int			ft_isdigit(int i);
+
+void		format_error(void);
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+
+void mandelbrot(t_data *fractol);
 
 #endif

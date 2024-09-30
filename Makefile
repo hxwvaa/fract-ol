@@ -9,7 +9,7 @@ MLX_LIB = $(MLX_DIR)/libmlx.a
 FRAMEWORKS = -framework OpenGL -framework AppKit
 
 # Source and object files
-SRCS = main.c utils.c
+SRCS = main.c utils.c utils2.c mandelbrot.c
 OBJS = $(SRCS:.c=.o)
 
 # Rules
