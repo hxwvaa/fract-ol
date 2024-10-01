@@ -2,6 +2,11 @@
 
 void colour_mandelbrot (int x, int y, t_data *fractol)
 {
+    t_value z;
+    t_value c;
+
+    z.x = convert_range(-2, 2, x);
+    z.y = convert_range(-2, 2, y);
     
 }
 

@@ -48,6 +48,7 @@ void	initialize_struct(t_data *fractol)
 	fractol->mlx_ptr = mlx_init();
 	fractol->mlx_window = mlx_new_window(fractol->mlx_ptr, WIDTH, HEIGHT,
 			fractol->fractal_name);
+	fractol->iterations = ITERATION;
 	fractol->img.img = mlx_new_image(fractol->mlx_ptr, WIDTH, HEIGHT);
 	fractol->img.addr = mlx_get_data_addr(fractol->img.img,
 			&fractol->img.bits_per_pixel, &fractol->img.line_length,
@@ -66,7 +67,6 @@ int	main(int ac, char **av)
 	if (n == -1)
 		format_error();
 	initialize_struct(&fractol);
-	// img = mlx_new_image(mlx_ptr, 400, 400);
 	if (n == 1)
 		mandelbrot(&fractol);
 	else if (n == 2)
