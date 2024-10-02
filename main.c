@@ -69,9 +69,9 @@ int	main(int ac, char **av)
 	initialize_struct(&fractol);
 	if (n == 1)
 		mandelbrot(&fractol);
-	else if (n == 2)
-		; // julia
-	else if (n == 3)
-		; // bonus
+	// else if (n == 2)
+	// 	; // julia
+	// else if (n == 3)
+	// 	; // bonus
 	mlx_loop(fractol.mlx_ptr);
 }

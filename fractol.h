@@ -2,7 +2,7 @@
 # define FRACTOL_H
 
 # include "minilibx_opengl/mlx.h"
-# include <OpenGL/gl.h>
+// # include <OpenGL/gl.h>
 # include <stdlib.h>
 # include <unistd.h>
 
