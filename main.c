@@ -67,11 +67,7 @@ int	main(int ac, char **av)
 	if (n == -1)
 		format_error();
 	initialize_struct(&fractol);
-	if (n == 1)
-		mandelbrot(&fractol);
-	// else if (n == 2)
-	// 	; // julia
-	// else if (n == 3)
-	// 	; // bonus
+	fractal(&fractol, n);
+
 	mlx_loop(fractol.mlx_ptr);
 }

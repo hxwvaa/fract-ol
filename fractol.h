@@ -8,7 +8,11 @@
 
 #define WIDTH 800
 #define HEIGHT 800
+
 #define ITERATION 20
+
+#define ESC_KEY 91
+
 
 typedef struct s_value
 {
@@ -43,7 +47,8 @@ void		format_error(void);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
-void mandelbrot(t_data *fractol);
+void fractal(t_data *fractol, int n);
+void colour_mandelbrot(int x, int y, t_data *fractol);
 
 double	convert_range(double new_min, double new_max, double value);
 #endif
