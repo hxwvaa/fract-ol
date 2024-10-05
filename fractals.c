@@ -1,10 +1,10 @@
 #include "fractol.h"
+#include <stdio.h>
 
 int get_color(int iterations)
 {
-    return (iterations * 255 / 100) << 16; // Simple red gradient based on iterations
+    return (iterations * 255 / 100) << 16;
 }
-
 
 void colour_mandelbrot(int x, int y, t_data *fractol)
 {
