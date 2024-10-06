@@ -5,14 +5,17 @@
 // # include <OpenGL/gl.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <math.h>
+
 
 #define WIDTH 800
 #define HEIGHT 800
 
-#define ITERATION 20
+#define ITERATION 200
 
 #define ESC_KEY 91
 
+#define ESC_KEY_L 65307
 
 typedef struct s_value
 {
@@ -36,6 +39,9 @@ typedef struct s_data
     char *fractal_name;
 	int iterations;
 	t_img img;
+	double shift_x;
+	double shift_y;
+	double zoom;
 }			t_data;
 
 size_t		ft_strlen(const char *s);
@@ -51,4 +57,6 @@ void fractal(t_data *fractol, int n);
 void colour_mandelbrot(int x, int y, t_data *fractol);
 
 double	convert_range(double new_min, double new_max, double value);
+
+int handle_keys(int key, t_data *fractol);
 #endif

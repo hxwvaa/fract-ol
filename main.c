@@ -53,6 +53,9 @@ void	initialize_struct(t_data *fractol)
 	fractol->img.addr = mlx_get_data_addr(fractol->img.img,
 			&fractol->img.bits_per_pixel, &fractol->img.line_length,
 			&fractol->img.endian);
+	fractol->zoom = 1;
+	fractol->shift_x = 0;
+	fractol->shift_y = 0;
     
 }
 
@@ -68,6 +71,7 @@ int	main(int ac, char **av)
 		format_error();
 	initialize_struct(&fractol);
 	fractal(&fractol, n);
+	mlx_key_hook(fractol.mlx_window, handle_keys, &fractol);
 
 	mlx_loop(fractol.mlx_ptr);
 }
