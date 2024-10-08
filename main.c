@@ -31,12 +31,14 @@ int	check_arg(int ac, char **av, t_data *fractol)
 			+ 1) == 0)
 	{
 		fractol->fractal_name = "Mandelbrot";
+		fractol->fract_n = 1;
 		return (1);
 	}
 	else if (ac == 4 && ft_strncmp("julia", av[1], ft_strlen("julia") + 1) == 0
 		&& (chk_val(av[2]) && chk_val(av[3])))
 	{
 		fractol->fractal_name = "Julia";
+		fractol->fract_n = 2;
 		return (2);
 	}
 	// add for bonus
@@ -59,6 +61,13 @@ void	initialize_struct(t_data *fractol)
     
 }
 
+int render_again(t_data *fractol)
+{
+	fractal(fractol, fractol->fract_n);
+    mlx_put_image_to_window(fractol->mlx_ptr, fractol->mlx_window, fractol->img.img, 0, 0);
+	return(1);
+}
+
 int	main(int ac, char **av)
 {
 	t_data	fractol;
@@ -72,6 +81,9 @@ int	main(int ac, char **av)
 	initialize_struct(&fractol);
 	fractal(&fractol, n);
 	mlx_key_hook(fractol.mlx_window, handle_keys, &fractol);
+	// mlx_mouse_hook(fractol.mlx_window, handle_mouse, &fractol);
+	// mlx_loop_hook(fractol.mlx_ptr, render_again, &fractol);
+	mlx_hook(fractol.mlx_window, 17, 0, close_fractol, &fractol);
 
 	mlx_loop(fractol.mlx_ptr);
 }
