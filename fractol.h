@@ -74,4 +74,5 @@ double	convert_range(double new_min, double new_max, double value);
 
 int close_fractol(t_data *fractol);
 int handle_keys(int key, t_data *fractol);
+
 #endif
