@@ -45,8 +45,9 @@ int	check_arg(int ac, char **av, t_data *fractol)
 	return (-1);
 }
 
-void	initialize_struct(t_data *fractol)
+void	initialize_struct(t_data *fractol, char **av)
 {
+	(void)av;
 	fractol->mlx_ptr = mlx_init();
 	fractol->mlx_window = mlx_new_window(fractol->mlx_ptr, WIDTH, HEIGHT,
 			fractol->fractal_name);
@@ -55,17 +56,15 @@ void	initialize_struct(t_data *fractol)
 	fractol->img.addr = mlx_get_data_addr(fractol->img.img,
 			&fractol->img.bits_per_pixel, &fractol->img.line_length,
 			&fractol->img.endian);
+	// if (fractol->fract_n == 2)
+	// {
+	// 	fractol->julia_x == ft_atod(av[3]);
+	// 	fractol->julia_y == ft_atod(av[4]);
+	// }
 	fractol->zoom = 1;
 	fractol->shift_x = 0;
 	fractol->shift_y = 0;
     
-}
-
-int render_again(t_data *fractol)
-{
-	fractal(fractol, fractol->fract_n);
-    mlx_put_image_to_window(fractol->mlx_ptr, fractol->mlx_window, fractol->img.img, 0, 0);
-	return(1);
 }
 
 int	main(int ac, char **av)
@@ -78,12 +77,10 @@ int	main(int ac, char **av)
 	n = check_arg(ac, av, &fractol);
 	if (n == -1)
 		format_error();
-	initialize_struct(&fractol);
+	initialize_struct(&fractol, av);
 	fractal(&fractol, n);
 	mlx_key_hook(fractol.mlx_window, handle_keys, &fractol);
-	// mlx_mouse_hook(fractol.mlx_window, handle_mouse, &fractol);
-	// mlx_loop_hook(fractol.mlx_ptr, render_again, &fractol);
+	mlx_mouse_hook(fractol.mlx_window, handle_mouse, &fractol);
 	mlx_hook(fractol.mlx_window, 17, 0, close_fractol, &fractol);
-
 	mlx_loop(fractol.mlx_ptr);
 }

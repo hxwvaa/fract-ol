@@ -7,6 +7,9 @@
 # include <unistd.h>
 #include <math.h>
 
+//remove
+#include <stdio.h>
+
 
 #define WIDTH 800
 #define HEIGHT 800
@@ -29,6 +32,12 @@
 #define KEY_U_L          117     // 'U' key
 #define KEY_P_L          112     // 'P' key
 
+//Mouse Click/Scroll
+# define MOUSE_LMB			1  // Left mouse button
+# define MOUSE_RMB			3  // Right mouse button
+# define MOUSE_MMB			2  // Middle mouse button
+# define MOUSE_SCROLL_UP    4  // Scroll wheel up
+# define MOUSE_SCROLL_DOWN  5  // Scroll wheel down
 
 typedef struct s_value
 {
@@ -54,6 +63,8 @@ typedef struct s_data
 	t_img img;
 	double shift_x;
 	double shift_y;
+	double julia_x;
+	double julia_y;
 	double zoom;
 	int fract_n;
 }			t_data;
@@ -74,5 +85,9 @@ double	convert_range(double new_min, double new_max, double value);
 
 int close_fractol(t_data *fractol);
 int handle_keys(int key, t_data *fractol);
+void zoom_fractal(t_data *fractol, int mouse_x, int mouse_y, int key);
+int get_color(int iterations);
+
+int handle_mouse(int key, int mouse_x, int mouse_y, t_data *fractol);
 
 #endif

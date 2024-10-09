@@ -1,33 +1,41 @@
 #include "fractol.h"
-#include <stdio.h>
+
+double	convert_range(double new_min, double new_max, double value)
+{
+	return ((((value - 0) * (new_max - new_min)) / (WIDTH - 0)) + new_min);
+}
 
 int get_color(int iterations)
 {
     return (iterations * 255 / 100) << 16;
 }
 
-void colour_mandelbrot(int x, int y, t_data *fractol)
+void colour_pixel(int x, int y, t_data *fractol, int n)
 {
-    t_value z;
-    t_value c;
-    int iterations;
-    double temp_x;
-
-    z.x = (convert_range(-2, 2, x) * fractol->zoom) + fractol->shift_x; 
-    z.y = (convert_range(-2, 2, y) * fractol->zoom) + fractol->shift_y;
-    c.x = z.x;
-    c.y = z.y;
-    iterations = 0;
-    while (hypot(z.x, z.y) <= 2 && iterations < fractol->iterations)
-    {
-        temp_x = z.x * z.x - z.y * z.y + c.x;
-        z.y = 2 * z.x * z.y + c.y;
-        z.x = temp_x;
-        iterations++;
-    }
-    if (iterations == fractol->iterations)
-        my_mlx_pixel_put(fractol, x, y, 0x000000);
-    else
-        my_mlx_pixel_put(fractol, x, y, get_color(iterations));
+    if (n == 1)
+        colour_mandelbrot(x, y, fractol);
+    // else if (n == 2)
+	// 	; // julia
+	// else if (n == 3)
+	// 	; // bonus
 }
 
+void fractal(t_data *fractol, int n)
+{
+    int x;
+    int y;
+
+    x = 0;
+    y = 0;
+    while(x < WIDTH)
+    {
+        y = 0;
+        while(y < HEIGHT)
+        {
+            colour_pixel(x, y, fractol, n);
+            y++;
+        }
+        x++;
+    }
+    mlx_put_image_to_window(fractol->mlx_ptr, fractol->mlx_window, fractol->img.img, 0, 0);
+}
