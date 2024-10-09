@@ -16,9 +16,6 @@
 
 #define ITERATION 200
 
-//Keys Mac
-#define ESC_KEY 91
-
 //Keys Linux
 #define ESC_KEY_L 65307
 #define KEY_LEFT_L       65361  // Left arrow key
@@ -31,6 +28,19 @@
 #define KEY_I_L          105     // 'I' key
 #define KEY_U_L          117     // 'U' key
 #define KEY_P_L          112     // 'P' key
+
+// Keys macOS
+#define ESC_KEY_M        53      // Escape key
+#define KEY_LEFT_M       123     // Left arrow key
+#define KEY_RIGHT_M      124     // Right arrow key
+#define KEY_UP_M         126     // Up arrow key
+#define KEY_DOWN_M       125     // Down arrow key
+#define KEY_EQUAL_M      24      // Equals key (=)
+#define KEY_MINUS_M      27      // Minus key (-)
+#define KEY_SPACE_BAR_M  49      // Space bar
+#define KEY_I_M          34      // 'I' key
+#define KEY_U_M          32      // 'U' key
+#define KEY_P_M          35      // 'P' key
 
 //Mouse Click/Scroll
 # define MOUSE_LMB			1  // Left mouse button
