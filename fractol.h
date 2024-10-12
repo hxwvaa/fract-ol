@@ -83,6 +83,7 @@ size_t		ft_strlen(const char *s);
 void		ft_putstr_fd(char *s, int fd);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_isdigit(int i);
+double	ft_atof(char *str);
 
 void		format_error(void);
 
@@ -90,14 +91,17 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 void fractal(t_data *fractol, int n);
 void colour_mandelbrot(int x, int y, t_data *fractol);
+void colour_julia(int x, int y, t_data *fractol);
 
 double	convert_range(double new_min, double new_max, double value);
 
 int close_fractol(t_data *fractol);
 int handle_keys(int key, t_data *fractol);
+void reset(t_data *fractol);
+int handle_mouse(int key, int mouse_x, int mouse_y, t_data *fractol);
+int move_mouse(int mouse_x, int mouse_y, t_data *fractol);
+
 void zoom_fractal(t_data *fractol, int mouse_x, int mouse_y, int key);
 int get_color(int iterations);
-
-int handle_mouse(int key, int mouse_x, int mouse_y, t_data *fractol);
 
 #endif

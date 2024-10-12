@@ -5,17 +5,29 @@ double	convert_range(double new_min, double new_max, double value)
 	return ((((value - 0) * (new_max - new_min)) / (WIDTH - 0)) + new_min);
 }
 
+// int get_color(int iterations)
+// {
+//     return (iterations * 255 / 100) << 16;
+// }
 int get_color(int iterations)
 {
-    return (iterations * 255 / 100) << 16;
+    double t = (double)iterations / ITERATION;
+    
+    int red = (int)(9 * (1 - t) * t * t * t * 255);
+    int green = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+    int blue = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+    
+    return red * 65536 + green * 256 + blue;
 }
+
+
 
 void colour_pixel(int x, int y, t_data *fractol, int n)
 {
     if (n == 1)
         colour_mandelbrot(x, y, fractol);
-    // else if (n == 2)
-	// 	; // julia
+    else if (n == 2)
+		colour_julia(x, y, fractol);
 	// else if (n == 3)
 	// 	; // bonus
 }
