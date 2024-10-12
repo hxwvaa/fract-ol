@@ -10,13 +10,14 @@
 //remove
 #include <stdio.h>
 
+#define M_PI 3.14159265358979323846
 
 #define WIDTH 800
 #define HEIGHT 800
 
 #define ITERATION 200
 
-//Keys Linux
+// Keys Linux
 #define ESC_KEY_L 65307
 #define KEY_LEFT_L       65361  // Left arrow key
 #define KEY_RIGHT_L      65363  // Right arrow key
@@ -26,8 +27,8 @@
 #define KEY_MINUS_L      45      // Minus key (-)
 #define KEY_SPACE_BAR_L  32      // Space bar
 #define KEY_I_L          105     // 'I' key
-#define KEY_U_L          117     // 'U' key
-#define KEY_P_L          112     // 'P' key
+#define KEY_M_L          109     // 'M' key
+#define KEY_C_L          99      // 'C' key
 
 // Keys macOS
 #define ESC_KEY_M        53      // Escape key
@@ -39,8 +40,9 @@
 #define KEY_MINUS_M      27      // Minus key (-)
 #define KEY_SPACE_BAR_M  49      // Space bar
 #define KEY_I_M          34      // 'I' key
-#define KEY_U_M          32      // 'U' key
-#define KEY_P_M          35      // 'P' key
+#define KEY_M_M          40      // 'M' key
+#define KEY_C_M          8      // 'C' key
+
 
 //Mouse Click/Scroll
 # define MOUSE_LMB			1  // Left mouse button
@@ -76,7 +78,9 @@ typedef struct s_data
 	double julia_x;
 	double julia_y;
 	double zoom;
+	int move_mouse;
 	int fract_n;
+	int theme;
 }			t_data;
 
 size_t		ft_strlen(const char *s);
@@ -92,6 +96,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void fractal(t_data *fractol, int n);
 void colour_mandelbrot(int x, int y, t_data *fractol);
 void colour_julia(int x, int y, t_data *fractol);
+void colour_burning_ship(int x, int y, t_data *fractol);
 
 double	convert_range(double new_min, double new_max, double value);
 
@@ -102,6 +107,6 @@ int handle_mouse(int key, int mouse_x, int mouse_y, t_data *fractol);
 int move_mouse(int mouse_x, int mouse_y, t_data *fractol);
 
 void zoom_fractal(t_data *fractol, int mouse_x, int mouse_y, int key);
-int get_color(int iterations);
+int get_color(int iterations, int theme);
 
 #endif

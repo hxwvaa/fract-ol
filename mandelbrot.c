@@ -8,7 +8,7 @@ void colour_mandelbrot(int x, int y, t_data *fractol)
     double temp_x;
 
     z.x = (convert_range(-2, 2, x) * fractol->zoom) + fractol->shift_x; 
-    z.y = (convert_range(2, -2, y) * fractol->zoom) + fractol->shift_y;
+    z.y = (convert_range(-2, 2, y) * fractol->zoom) + fractol->shift_y;
     c.x = z.x;
     c.y = z.y;
     iterations = 0;
@@ -22,5 +22,5 @@ void colour_mandelbrot(int x, int y, t_data *fractol)
     if (iterations == fractol->iterations)
         my_mlx_pixel_put(fractol, x, y, 0x000000);
     else
-        my_mlx_pixel_put(fractol, x, y, get_color(iterations));
+        my_mlx_pixel_put(fractol, x, y, get_color(iterations, fractol->theme));
 }

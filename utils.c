@@ -27,7 +27,7 @@ void format_error(void)
     ft_putstr_fd("\n\033[31;1mFormat Error!\n", 2);
     ft_putstr_fd("./fractol mandelbrot\n", 2);
     ft_putstr_fd("./fractol julia <value> <value>\n", 2);
-    ft_putstr_fd("./fractol bonus\n\n\033[0m", 2); //Change this later
+    ft_putstr_fd("./fractol burning_ship\n\n\033[0m", 2); //Change this later
     exit(1);
 }
 

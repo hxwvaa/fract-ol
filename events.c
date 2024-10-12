@@ -10,22 +10,28 @@ int close_fractol(t_data *fractol)
 
 int handle_keys(int key, t_data *fractol)
 {
-    if (key == ESC_KEY_L)
+    if (key == ESC_KEY_L || key == ESC_KEY_M)
         close_fractol(fractol);
-    else if (key == KEY_SPACE_BAR_L)
+    else if (key == KEY_SPACE_BAR_L || key == KEY_SPACE_BAR_M)
         reset(fractol);
-    else if (key == KEY_RIGHT_L)
+    else if (key == KEY_RIGHT_L || key == KEY_RIGHT_M)
         fractol->shift_x += 0.1 * fractol->zoom;
-    else if (key == KEY_LEFT_L)
+    else if (key == KEY_LEFT_L || key == KEY_LEFT_M)
         fractol->shift_x -= 0.1 * fractol->zoom;
-    else if (key == KEY_UP_L)
+    else if (key == KEY_UP_L || key == KEY_UP_M)
         fractol->shift_y += 0.1 * fractol->zoom;
-    else if (key == KEY_DOWN_L)
+    else if (key == KEY_DOWN_L || key == KEY_DOWN_M)
         fractol->shift_y -= 0.1 * fractol->zoom;
-    else if (key == KEY_EQUAL_L)
+    else if (key == KEY_EQUAL_L || key == KEY_EQUAL_M)
         fractol->iterations += 10;
-    else if (key == KEY_MINUS_L)
-        fractol->iterations -= 10;    
+    else if (key == KEY_MINUS_L || key == KEY_MINUS_M)
+        fractol->iterations -= 10;
+    else if (key == KEY_M_L || key == KEY_M_M)
+        fractol->move_mouse *= -1;
+    else if (key == KEY_C_L || key == KEY_C_M)
+        fractol->theme += 1;
+    if (fractol->theme > 5)
+        fractol->theme = 1;
     fractal(fractol, fractol->fract_n);
     return(1);
 }
@@ -52,7 +58,7 @@ int move_mouse(int mouse_x, int mouse_y, t_data *fractol)
 
     x = (convert_range(-2, 2, mouse_x) * fractol->zoom) + fractol->shift_x; 
     y = (convert_range(2, -2, mouse_y) * fractol->zoom) + fractol->shift_y;
-    if (fractol->fract_n == 2)
+    if (fractol->fract_n == 2 && fractol->move_mouse == 1)
     {
         fractol->julia_x = x;
         fractol->julia_y = y;

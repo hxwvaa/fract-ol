@@ -43,7 +43,13 @@ int	check_arg(int ac, char **av, t_data *fractol)
 		fractol->fract_n = 2;
 		return (2);
 	}
-	// add for bonus
+	else if (ac == 2 && ft_strncmp("burning_ship", av[1], ft_strlen("burning_ship")
+			+ 1) == 0)
+	{
+		fractol->fractal_name = "Burning_ship";
+		fractol->fract_n = 3;
+		return (3);
+	}
 	return (-1);
 }
 
@@ -62,10 +68,11 @@ void	initialize_struct(t_data *fractol, char **av)
 		fractol->julia_x = ft_atof(av[2]);
 		fractol->julia_y = ft_atof(av[3]);
 	}
+	fractol->move_mouse = -1;
 	fractol->zoom = 1;
 	fractol->shift_x = 0;
 	fractol->shift_y = 0;
-    
+    fractol->theme = 1;
 }
 
 int	main(int ac, char **av)
