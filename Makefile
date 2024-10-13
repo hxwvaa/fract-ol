@@ -2,7 +2,7 @@ NAME = fractol
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX_DIR = minilibx-linux
+MLX_DIR = minilibx_opengl
 MLX_LIB = $(MLX_DIR)/libmlx.a
 FRAMEWORKS = -framework OpenGL -framework AppKit
 LINUX = -lXext -lX11 -lm -lz
@@ -19,7 +19,7 @@ $(MLX_LIB):
 	$(CC) $(CFLAGS) -I$(MLX_DIR) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(MLX_LIB) $(LINUX) -o $(NAME)
+	@$(CC) $(OBJS) $(MLX_LIB) $(FRAMEWORKS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)

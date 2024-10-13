@@ -44,9 +44,9 @@ int handle_mouse(int key, int mouse_x, int mouse_y, t_data *fractol)
     else if (key == MOUSE_RMB)
         zoom_fractal(fractol, mouse_x, mouse_y, MOUSE_RMB);
     else if (key == MOUSE_SCROLL_UP)
-        fractol->zoom *= 1.2;
+        zoom_fractal(fractol, mouse_x, mouse_y, MOUSE_LMB);
     else if (key == MOUSE_SCROLL_DOWN)
-        fractol->zoom /= 1.2;
+        zoom_fractal(fractol, mouse_x, mouse_y, MOUSE_RMB);
     fractal(fractol, fractol->fract_n);
     return(1);
 }
@@ -57,11 +57,12 @@ int move_mouse(int mouse_x, int mouse_y, t_data *fractol)
     double y;
 
     x = (convert_range(-2, 2, mouse_x) * fractol->zoom) + fractol->shift_x; 
-    y = (convert_range(2, -2, mouse_y) * fractol->zoom) + fractol->shift_y;
+    y = (convert_range(-2, 2, mouse_y) * fractol->zoom) + fractol->shift_y;
     if (fractol->fract_n == 2 && fractol->move_mouse == 1)
     {
         fractol->julia_x = x;
         fractol->julia_y = y;
     }
+    fractal(fractol, fractol->fract_n);
     return(1);
 }

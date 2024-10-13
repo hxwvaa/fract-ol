@@ -20,14 +20,14 @@ void zoom_fractal(t_data *fractol, int mouse_x, int mouse_y, int key)
 	screen_x = 0;
 	screen_y = 0;
 	x = (convert_range(-2, 2, mouse_x) * fractol->zoom) + fractol->shift_x; 
-    y = (convert_range(2, -2, mouse_y) * fractol->zoom) + fractol->shift_y;
+    y = (convert_range(-2, 2, mouse_y) * fractol->zoom) + fractol->shift_y;
 
 	if (key == MOUSE_LMB)
 		fractol->zoom /=1.2;
 	else if (key == MOUSE_RMB)
 		fractol->zoom *= 1.2;
 	screen_x = (convert_range(-2, 2, mouse_x) * fractol->zoom) + fractol->shift_x; 
-    screen_y = (convert_range(2, -2, mouse_y) * fractol->zoom) + fractol->shift_y;
+    screen_y = (convert_range(-2, 2, mouse_y) * fractol->zoom) + fractol->shift_y;
 	fractol->shift_x += (x - screen_x);
 	fractol->shift_y += (y - screen_y);
 }

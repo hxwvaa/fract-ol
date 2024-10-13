@@ -10,8 +10,6 @@
 //remove
 #include <stdio.h>
 
-#define M_PI 3.14159265358979323846
-
 #define WIDTH 800
 #define HEIGHT 800
 
@@ -26,7 +24,6 @@
 #define KEY_EQUAL_L      61      // Equals key (=)
 #define KEY_MINUS_L      45      // Minus key (-)
 #define KEY_SPACE_BAR_L  32      // Space bar
-#define KEY_I_L          105     // 'I' key
 #define KEY_M_L          109     // 'M' key
 #define KEY_C_L          99      // 'C' key
 
@@ -39,8 +36,7 @@
 #define KEY_EQUAL_M      24      // Equals key (=)
 #define KEY_MINUS_M      27      // Minus key (-)
 #define KEY_SPACE_BAR_M  49      // Space bar
-#define KEY_I_M          34      // 'I' key
-#define KEY_M_M          40      // 'M' key
+#define KEY_M_M          46      // 'M' key
 #define KEY_C_M          8      // 'C' key
 
 
