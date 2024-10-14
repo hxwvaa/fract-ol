@@ -5,8 +5,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WIDTH 200
-# define HEIGHT 200
+# define WIDTH 800
+# define HEIGHT 800
 
 # define ITERATION 200
 
