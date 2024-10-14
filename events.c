@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   events.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbasheer <hbasheer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/14 13:11:05 by hbasheer          #+#    #+#             */
+/*   Updated: 2024/10/14 13:11:06 by hbasheer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	close_fractol(t_data *fractol)
@@ -30,7 +42,7 @@ int	handle_keys(int key, t_data *fractol)
 		fractol->move_mouse *= -1;
 	else if (key == KEY_C)
 		fractol->theme += 1;
-	if (fractol->theme > 5)
+	if (fractol->theme > 3)
 		fractol->theme = 1;
 	fractal(fractol, fractol->fract_n);
 	return (1);

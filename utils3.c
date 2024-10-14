@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils3.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbasheer <hbasheer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/14 13:11:19 by hbasheer          #+#    #+#             */
+/*   Updated: 2024/10/14 13:47:33 by hbasheer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 double	convert_range(double new_min, double new_max, double value)
@@ -8,23 +20,30 @@ double	convert_range(double new_min, double new_max, double value)
 int	get_color(int iterations, int theme)
 {
 	double	t;
+	int		r;
+	int		g;
+	int		b;
 
 	t = (double)iterations / ITERATION;
 	if (theme == 1)
-		return ((((int)(255 * (t * 3)) % 256) * 65536) + (((int)(255 * (t * 5))
-					% 256) * 256) + (int)(255 * (t * 7)) % 256);
+	{
+		r = (int)(128.0 * (1 + sin(M_PI * 2 * t * 3)));
+		g = (int)(128.0 * (1 + sin(M_PI * 2 * t * 5)));
+		b = (int)(128.0 * (1 + sin(M_PI * 2 * t * 7)));
+	}
 	else if (theme == 2)
-		return ((((int)(255 * (t * 5)) % 256) * 65536) + (((int)(255 * (t * 3))
-					% 256) * 256) + (int)(255 * (t * 7)) % 256);
-	else if (theme == 3)
-		return ((((int)(255 * (t * 14)) % 256) * 65536) + (((int)(255 * (t
-							* 12)) % 256) * 256) + (int)(255 * (t * 16)) % 256);
-	else if (theme == 4)
-		return ((((int)(255 * (t * 1)) % 256) * 65536) + (((int)(255 * (t * 2))
-					% 256) * 256) + (int)(255 * (t * 3)) % 256);
+	{
+		r = (int)(128.0 * (1 + sin(M_PI * 2 * t * 4)));
+		g = (int)(128.0 * (1 + sin(M_PI * 2 * t * 2)));
+		b = (int)(128.0 * (1 + sin(M_PI * 2 * t * 6)));
+	}
 	else
-		return ((((int)(255 * t)) * 65536) + (((int)(255 * t)) * 256)
-			+ ((int)(255 * t)));
+	{
+		r = (int)(128.0 * (1 + sin(M_PI * 2 * t * 15)));
+		g = (int)(128.0 * (1 + sin(M_PI * 2 * t * 13)));
+		b = (int)(128.0 * (1 + sin(M_PI * 2 * t * 17)));
+	}
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	colour_pixel(int x, int y, t_data *fractol, int n)

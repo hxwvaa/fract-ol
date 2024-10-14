@@ -1,19 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbasheer <hbasheer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/14 13:11:07 by hbasheer          #+#    #+#             */
+/*   Updated: 2024/10/14 13:59:17 by hbasheer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+//Library Tings
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WIDTH 800
-# define HEIGHT 800
+//Window Size Tings
+# define WIDTH 400
+# define HEIGHT 400
 
+//Maximum Iteration Ting
 # define ITERATION 200
 
+//Key Tings
 # ifdef __APPLE__
 #  include "minilibx_opengl/mlx.h"
 #  include <OpenGL/gl.h>
-// Keys Mac
+// Keys Mac Tings
 #  define ESC_KEY 53       // Escape key
 #  define KEY_LEFT 123     // Left arrow key
 #  define KEY_RIGHT 124    // Right arrow key
@@ -26,7 +42,7 @@
 #  define KEY_C 8          // 'C' key
 # else
 #  include "minilibx-linux/mlx.h"
-// Keys Linux
+// Keys Linux Tings
 #  define ESC_KEY 65307
 #  define KEY_LEFT 65361   // Left arrow key
 #  define KEY_RIGHT 65363  // Right arrow key
@@ -39,7 +55,7 @@
 #  define KEY_C 99         // 'C' key
 # endif
 
-// Mouse Click/Scroll
+// Mouse Click/Scroll Tings
 # define MOUSE_LMB 1         // Left mouse button
 # define MOUSE_RMB 3         // Right mouse button
 # define MOUSE_MMB 2         // Middle mouse button
