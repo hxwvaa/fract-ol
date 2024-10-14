@@ -22,13 +22,13 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 }
 
-void format_error(void)
+void	format_error(void)
 {
-    ft_putstr_fd("\n\033[31;1mFormat Error!\n", 2);
-    ft_putstr_fd("./fractol mandelbrot\n", 2);
-    ft_putstr_fd("./fractol julia <value> <value>\n", 2);
-    ft_putstr_fd("./fractol burning_ship\n\n\033[0m", 2); //Change this later
-    exit(1);
+	ft_putstr_fd("\n\033[31;1mFormat Error!\n", 2);
+	ft_putstr_fd("./fractol mandelbrot\n", 2);
+	ft_putstr_fd("./fractol julia <value> <value>\n", 2);
+	ft_putstr_fd("./fractol burning_ship\n\n\033[0m", 2);
+	exit(1);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

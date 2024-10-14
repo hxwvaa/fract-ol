@@ -7,7 +7,7 @@ MLX_LIB = $(MLX_DIR)/libmlx.a
 FRAMEWORKS = -framework OpenGL -framework AppKit
 LINUX = -lXext -lX11 -lm -lz
 
-SRCS = main.c utils.c utils2.c mandelbrot.c fractals.c events.c julia.c burning_ship.c
+SRCS = main.c utils.c utils2.c utils3.c mandelbrot.c events.c julia.c burning_ship.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(MLX_LIB) $(NAME)
